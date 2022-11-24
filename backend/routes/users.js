@@ -5,8 +5,8 @@ require("../models/connection");
 const User = require("../models/users");
 const { checkBody } = require("../modules/checkBody");
 const uid2 = require("uid2");
-
 const token = uid2(32);
+const bcrypt = require("bcrypt");
 
 // ROUTE USER
 
@@ -19,14 +19,15 @@ router.post("/signup", (req, res) => {
   // Si utilisateurs non enregistré alors enregistrement
   User.findOne({ username: req.body.username }).then((data) => {
     if (data === null) {
+      const hash = bcrypt.hashSync(req.body.password, 10);
       const newUser = new User({
         firstname: req.body.firstname,
         username: req.body.username,
-        password: req.body.password,
+        password: hash,
         token: token,
       });
-      newUser.save().then(() => {
-        res.json({ result: true, user: newUser });
+      newUser.save().then((newDoc) => {
+        res.json({ result: true, token: newDoc.token });
       });
     } else {
       // Utilisateur déja existant
@@ -43,32 +44,23 @@ router.post("/signin", (req, res) => {
     return;
   }
   // Verification des datas
-  User.findOne({
-    username: req.body.username,
-    password: req.body.password,
-  }).then((data) => {
-    // Si la DataBase valide alors il peut se connecter
-    if (data) {
-      res.json({ result: true, connect: "connected" });
-      // Sinon utilisateur introuvable
+  User.findOne({ username: req.body.username }).then((data) => {
+    if (data && bcrypt.compareSync(req.body.password, data.password)) {
+      res.json({ result: true, token: data.token });
     } else {
-      res.json({ result: false, error: "User not found" });
+      res.json({ result: false, error: "User not found or wrong password" });
     }
   });
 });
 
-// //! Création du sous document Tweet  USER/TWEET
-// router.post("/tweet", (req, res) => {
-//   if (!checkBody(req.body, ["text"])) {
-//     res.json({ result: false, error: "Missing or empty fields" });
-//   } else {
-//     const newTweet = {
-//       text: req.body.text,
-//     };
-//     newTweet.save().then(() => {
-//       res.json({ result: true, tweet: newTweet });
-//     });
-//   }
-// });
+//! Création du sous document Tweet  USER/TWEET
+router.post("/tweet", (req, res) => {
+  if (!checkBody(req.body, ["tweet"])) {
+    res.json({ result: false, error: "Missing or empty fields" });
+  } else {
+    const tweet = req.body.tweet;
+    User.updateOne({ token: req.body.token }, [tweets.push(tweet)]).then();
+  }
+});
 
 module.exports = router;
