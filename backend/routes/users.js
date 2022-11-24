@@ -5,17 +5,20 @@ require("../models/connection");
 const User = require("../models/users");
 const { checkBody } = require("../modules/checkBody");
 
-// Création de la route SIGN UP avec le module CheckBody
+//! Création de la route SIGN UP avec le module CheckBody
 router.post("/signup", (req, res) => {
   // verification des inputs bien rempli
-  if (!checkBody(req.body, ["firstname", "username", "password"])) {
+  if (
+    !checkBody(req.body, ["firstname", "localisation", "username", "password"])
+  ) {
     res.json({ result: false, error: "Missing or empty fields" });
   }
-  // Check if user has not already been registered
+  // Si utilisateurs non enregistré alors enregistrement
   User.findOne({ username: req.body.username }).then((data) => {
     if (data === null) {
       const newUser = new User({
         firstname: req.body.firstname,
+        localisation: req.body.localisation,
         username: req.body.username,
         password: req.body.password,
       });
@@ -23,7 +26,7 @@ router.post("/signup", (req, res) => {
         res.json({ result: true, info: newUser });
       });
     } else {
-      // User already exists in DataBase
+      // Utilisateur déja existant
       res.json({ result: false, error: "User already exists" });
     }
   });
@@ -36,13 +39,15 @@ router.post("/signin", (req, res) => {
     res.json({ result: false, error: "Missing or empty fields" });
     return;
   }
-
+  //! Compare les infos entré dans la base de donnée
   User.findOne({
     username: req.body.username,
     password: req.body.password,
   }).then((data) => {
+    // Si la DataBase valide alors il peut se connecter
     if (data) {
-      res.json({ result: true });
+      res.json({ result: true, info: "connected" });
+      // Sinon utilisateur introuvable
     } else {
       res.json({ result: false, error: "User not found" });
     }

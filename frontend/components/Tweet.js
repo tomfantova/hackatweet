@@ -6,10 +6,23 @@ import { Modal } from "antd";
 import Link from "next/link";
 
 function Tweet() {
+  const [tweet, setTweet] = useState("");
+
   return (
     <div>
       <main className={styles.main}>
-        <div className={styles.left}>Tweet ici</div>
+        <div className={styles.container}>
+          <input
+            type="text"
+            placeholder="What's up ?"
+            id="tweet"
+            onChange={(e) => setTweet(e.target.value)}
+            value={tweet}
+          />
+          <div className={styles.post}>
+            <button id="post">Tweet</button>
+          </div>
+        </div>
       </main>
     </div>
   );
