@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.css";
+import Tweet from "../components/Tweet";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Moment from "react-moment";
@@ -14,6 +15,7 @@ function Home() {
         </div>
         <div className={styles.tweets}>
           <h2>Home</h2>
+          <Tweet />
         </div>
         <div className={styles.trends}>
           <h2>Trends</h2>
