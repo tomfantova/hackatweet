@@ -1,101 +1,111 @@
+
+
 .globalContainer {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  display: flex;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+
 }
 
 .modalContainer {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 60px;
-  width: 550px;
-  height: 550px;
-  background-color: #161d28;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px 25px;
-  z-index: 10;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 60px;
+    width: 550px;
+    height: 550px;
+    background-color: #161d28;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 25px;
+    z-index: 10;
 }
 
 .modalContainer input {
-  padding: 10px 50px;
-  border-radius: 25px;
-  border: 1px solid #bababa;
-  font-size: 1em;
+    padding: 10px 50px;
+    border-radius: 25px;
+    border: 1px solid #bababa;
+    font-size: 1em;
 }
 
 .modalContainer .closeIcon {
-  height: 25px;
-  width: 25px;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  cursor: pointer;
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
 }
 
 .signUpModalBtn {
-  font-weight: bold;
-  padding: 10px 50px;
-  background-color: white;
-  color: #161d28;
-  width: 200px;
-  text-align: center;
-  border-radius: 25px;
-  cursor: pointer;
+    font-weight: bold;
+    padding: 10px 50px;
+    background-color: white;
+    color: #161d28;
+    width: 200px;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 .imageContainer {
-  width: 40vw;
-  height: 100vh;
-  background-image: url('/assets/images/hackaTweet.png');
-  background-position: center;
+    width: 40vw;
+    height: 100vh;
+    background-image: url('/hackaTweet.png');
+    background-position: center;
+    
 }
 
 .textContainer {
-  width: 60vw;
-  padding: 25px;
+    width: 60vw;
+    padding: 25px;
 }
 
 .textContainer h2{
-  font-size: 5em;
-  font-weight: bolder;
-  margin: 40px 0 0 0;
+    font-size: 5em;
+    font-weight: bolder;
+    margin: 40px 0 0 0;
+    color: white;
 }
 
 .textContainer h4{
-  font-size: 2em;
-  font-weight: bold;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
 }
 
 .textContainer p {
-  font-size: 17px;
-  font-weight: 500;
+    font-size: 17px;
+    font-weight: 500;
+    color: white;
 }
 
 .twitterIcon {
-  width: 60px;
-  height: 60px;
-  transform: rotate(180deg);
+    width: 60px;
+    height: 60px;
+    transform: rotate(180deg);
+    color : white
 }
 
 .signUpBtn {
-  font-weight: bold;
-  padding: 10px 50px;
-  background-color: #3690ee;
-  width: 200px;
-  text-align: center;
-  border-radius: 25px;
-  cursor: pointer;
+    font-weight: bold;
+    padding: 10px 50px;
+    background-color: #3690ee;
+    width: 200px;
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 .signInBtn {
-  font-weight: bold;
-  padding: 10px 50px;
-  text-align: center;
-  cursor: pointer;
+    font-weight: bold;
+    padding: 10px 50px;
+    text-align: center;
+    cursor: pointer;
+   
 }

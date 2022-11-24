@@ -4,20 +4,28 @@ import styles from '../styles/Login.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+
 
 export default function Login() {
 
+  const dispatch = useDispatch();
+
   const [signUpModal, setSignUpModal] = useState(false)
-  const [signInModal, setSigInModal] = useState(false)
+  const [signInModal, setSignInModal] = useState(false)
+  
+
+
+
 
   const handleSignUp = () => {
-    signInModal && setSigInModal(false)
+    signInModal && setSignInModal(false)
     setSignUpModal(true)
   }
 
   const handleSignIn = () => {
-    signUpModal && setSigUpModal(false)
-    setSignUpModal(true)
+    signUpModal && setSignUpModal(false)
+    setSignInModal(true)
   }
 
   const signUpModalContent = (
