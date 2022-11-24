@@ -1,136 +1,101 @@
-.main {
-  display: flex;
-  min-height: 100vh;
-  background-color: #292e38ff;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: white;
-}
-
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.left {
-  height: 840px;
-  width: 300px;
-  padding: 25px;
-  padding-left: 35px;
-}
-
-.logo {
-  height: 35px;
-}
-
-.tweets {
-  height: 840px;
-  width: 720px;
-  padding: 10px;
-  border-left: 1px grey solid;
-  border-right: 1px grey solid;
-}
-
-.trends {
-  height: 840px;
-  width: 300px;
-  padding: 10px;
-}
-
-.container {
-  display: grid;
+.globalContainer {
   height: 100vh;
-  grid-template-rows: repeat(4, 25%);
-  grid-template-columns: repeat(4, 400px);
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-.left {
+.modalContainer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 60px;
+  width: 550px;
+  height: 550px;
+  background-color: #161d28;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #0e9efa;
-  grid-row-start: 1;
-  grid-row-end: 5;
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
-
-.right {
-  border: 0.5 black solid;
-  background-color: #161f2d;
-  grid-row-start: 1;
-  grid-row-end: 5;
-  color: white;
-  grid-column-start: 2;
-  grid-column-end: 5;
-}
-
-.twitterIcon {
-  transform: scale(10, -10);
-  color: white;
-}
-.twitterIconSmall {
-  transform: scale(5, -5);
-  color: white;
-}
-
-.formSection {
-  margin-left: 50px;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  padding: 50px 25px;
+  z-index: 10;
 }
 
-.title {
-  font-size: 60px;
-  font-family: "MontHeavy", sans-serif;
+.modalContainer input {
+  padding: 10px 50px;
+  border-radius: 25px;
+  border: 1px solid #bababa;
+  font-size: 1em;
 }
 
-.titleSmall {
-  font-size: 40px;
-  font-family: "MontHeavy", sans-serif;
-}
-
-.titleAlready {
-  font-size: 22px;
-  font-family: "MontHeavy", sans-serif;
-}
-
-.btnSignin {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: blue;
-  padding: 10px;
-  border-radius: 20px;
-  width: 200px;
-  background-color: #121b26;
-  border: 1px solid white;
-  color: #0e9efa;
-  font-weight: bold;
+.modalContainer .closeIcon {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
   cursor: pointer;
 }
 
-.btnSignup {
-  background-color: #0e9efa;
-  border-radius: 20px;
-  color: white;
+.signUpModalBtn {
   font-weight: bold;
+  padding: 10px 50px;
+  background-color: white;
+  color: #161d28;
   width: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.imageContainer {
+  width: 40vw;
+  height: 100vh;
+  background-image: url('/assets/images/hackaTweet.png');
+  background-position: center;
+}
+
+.textContainer {
+  width: 60vw;
+  padding: 25px;
+}
+
+.textContainer h2{
+  font-size: 5em;
+  font-weight: bolder;
+  margin: 40px 0 0 0;
+}
+
+.textContainer h4{
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.textContainer p {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.twitterIcon {
+  width: 60px;
+  height: 60px;
+  transform: rotate(180deg);
+}
+
+.signUpBtn {
+  font-weight: bold;
+  padding: 10px 50px;
+  background-color: #3690ee;
+  width: 200px;
+  text-align: center;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.signInBtn {
+  font-weight: bold;
+  padding: 10px 50px;
+  text-align: center;
   cursor: pointer;
 }

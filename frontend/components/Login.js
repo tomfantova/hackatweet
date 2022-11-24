@@ -1,52 +1,61 @@
-import styles from "../styles/Login.module.css";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Moment from "react-moment";
-import { Modal } from "antd";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
-function Login() {
-  const handleClickSignin = () => {
-    console.log("coucou signin");
-  };
+import React, { useState } from 'react'
+import styles from '../styles/Login.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-  const handleClickSignup = () => {
-    console.log("coucou signup");
-  };
-  return (
-    <div className={styles.container}>
-      <div className={styles.left}>
+export default function Login() {
+
+  const [signUpModal, setSignUpModal] = useState(false)
+  const [signInModal, setSigInModal] = useState(false)
+
+  const handleSignUp = () => {
+    signInModal && setSigInModal(false)
+    setSignUpModal(true)
+  }
+
+  const handleSignIn = () => {
+    signUpModal && setSigUpModal(false)
+    setSignUpModal(true)
+  }
+
+  const signUpModalContent = (
+    <div className={styles.modalContainer}>
+        <FontAwesomeIcon icon={faXmark} className={styles.closeIcon} onClick={() => setSignUpModal(false)}/>
         <FontAwesomeIcon icon={faTwitter} className={styles.twitterIcon} />
-      </div>
-      <div className={styles.right}>
-        <div className={styles.formSection}>
-          <FontAwesomeIcon
-            icon={faTwitter}
-            className={styles.twitterIconSmall}
-          />
-          <div>
-            <h1 className={styles.title}>SEE WHAT'S HAPPENNING</h1>
-            <h4 className={styles.titleSmall}>Join Hackatweet today</h4>
-            <div
-              onClick={() => handleClickSignup()}
-              className={styles.btnSignup}
-            >
-              Sign Up
-            </div>
-            <h3 className={styles.titleAlready}>Already have an account ? </h3>
-            <div
-              onClick={() => handleClickSignin()}
-              className={styles.btnSignin}
-            >
-              Sign In
-            </div>
-          </div>
-        </div>
-      </div>
+        <h2>Create your Hackatweet account</h2>
+        <input type="text" placeholder='Firstname'/>
+        <input type="text" placeholder='Username'/>
+        <input type="password" placeholder='Password'/>
+        <div className={styles.signUpModalBtn}>Sign up</div>
     </div>
-  );
-}
+  )
 
-export default Login;
+  const signInModalContent = (
+    <div className={styles.modalContainer}>
+        <FontAwesomeIcon icon={faXmark} className={styles.closeIcon} onClick={() => setSignInModal(false)}/>
+        <FontAwesomeIcon icon={faTwitter} className={styles.twitterIcon} />
+        <h2>Log In to your Hackatweet account</h2>
+        <input type="text" placeholder='Username'/>
+        <input type="password" placeholder='Password'/>
+        <div className={styles.signUpModalBtn}>Sign In</div>
+    </div>
+  )
+
+  return (
+    <div className={styles.globalContainer}>
+        {signUpModal && signUpModalContent}
+        <div className={styles.imageContainer}></div>
+        <div className={styles.textContainer}>
+            <FontAwesomeIcon icon={faTwitter} className={styles.twitterIcon} />
+            <h2>See what's <br/>happening</h2>
+            <h4>Join Hackatweet today</h4>
+            <div className={styles.signUpBtn} onClick={() => handleSignUp()}>Sign up</div>
+            <p>Already have an account?</p>
+            <div className={styles.signUpBtn} onClick={() => handleSignIn()}>Sign in</div>
+                
+        </div>
+    </div>
+  )
+}
