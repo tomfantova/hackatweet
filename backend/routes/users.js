@@ -29,4 +29,24 @@ router.post("/signup", (req, res) => {
   });
 });
 
+// Création de la route Sign In ( connexion )
+router.post("/signin", (req, res) => {
+  // verification des inputs bien rempli
+  if (!checkBody(req.body, ["username", "password"])) {
+    res.json({ result: false, error: "Missing or empty fields" });
+    return;
+  }
+
+  User.findOne({
+    username: req.body.username,
+    password: req.body.password,
+  }).then((data) => {
+    if (data) {
+      res.json({ result: true });
+    } else {
+      res.json({ result: false, error: "User not found" });
+    }
+  });
+});
+
 module.exports = router;
