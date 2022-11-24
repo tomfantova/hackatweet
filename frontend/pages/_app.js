@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import Head from "next/head";
-import Home from "../components/Home";
 import { Provider } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
