@@ -5,7 +5,10 @@ import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
+  
 const reducers = combineReducers({
   /*ajouter les reducers ici*/
 });
