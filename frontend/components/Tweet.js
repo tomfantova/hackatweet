@@ -14,6 +14,7 @@ function Tweet() {
         <div className={styles.container}>
           <input
             type="text"
+            maxLength="280"
             placeholder="What's up ?"
             id="tweet"
             onChange={(e) => setTweet(e.target.value)}

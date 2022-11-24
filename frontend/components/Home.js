@@ -17,10 +17,10 @@ function Home() {
               <img src="egg.jpg" className={styles.egg} />
               <div className={styles.pseudo}>
                 <p>user.firstname ici</p>
-                <p>@user.username ici</p>
+                <p className={styles.username}>@user.username ici</p>
               </div>
             </div>
-            <button>Logout</button>
+            <button className={styles.logout}>Logout</button>
           </div>
         </div>
         <div className={styles.tweets}>
