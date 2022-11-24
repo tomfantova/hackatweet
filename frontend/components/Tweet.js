@@ -7,6 +7,7 @@ import Link from "next/link";
 
 function Tweet() {
   const [tweet, setTweet] = useState("");
+  const count = tweet.length;
 
   return (
     <div>
@@ -21,6 +22,7 @@ function Tweet() {
             value={tweet}
           />
           <div className={styles.post}>
+            <span className={styles.count}>{count}/280</span>
             <button id="post">Tweet</button>
           </div>
         </div>

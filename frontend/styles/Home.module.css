@@ -1,7 +1,6 @@
 .main {
   display: flex;
   min-height: 100vh;
-  background-color: #292e38ff;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
 }
@@ -77,7 +76,16 @@
 }
 
 .logout {
-  background-color: #292e38ff;
   border: 2px solid#cccccc;
   color: #eeeeee;
+  background-color: transparent;
+}
+
+.post {
+  display: flex;
+  justify-content: center;
+}
+
+.LastTweets {
+  height: 580px;
 }
