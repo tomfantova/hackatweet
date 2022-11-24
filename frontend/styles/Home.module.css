@@ -26,7 +26,11 @@
   height: 840px;
   width: 300px;
   padding: 25px;
-  padding-left: 35px;
+  padding-left: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .logo {
@@ -45,4 +49,22 @@
   height: 840px;
   width: 300px;
   padding: 10px;
+}
+
+.egg {
+  height: 60px;
+  border-radius: 50px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pseudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: small;
 }
