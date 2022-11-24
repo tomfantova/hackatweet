@@ -8,3 +8,27 @@ body {
 * {
   box-sizing: border-box;
 }
+
+input {
+  border: none;
+  outline: none;
+  border-bottom: 0.5px lightgray solid;
+  margin-bottom: 15px;
+  width: 600px;
+  height: 30px;
+  background: none;
+  font-size: large;
+  color: white;
+}
+
+button {
+  height: 30px;
+  width: 90px;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: #1d9bf0;
+  border: none;
+  cursor: pointer;
+}

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Moment from "react-moment";
 import { Modal } from "antd";
 import Link from "next/link";
+import Tweet from "./Tweet";
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
         </div>
         <div className={styles.tweets}>
           <h2>Home</h2>
+          <Tweet />
         </div>
         <div className={styles.trends}>
           <h2>Trends</h2>
