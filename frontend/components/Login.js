@@ -10,6 +10,50 @@ export default function Login() {
 
   const [signUpModal, setSignUpModal] = useState(false);
   const [signInModal, setSignInModal] = useState(false);
+  const [signUpUsername, setSignUpUsername] = useState('');
+	const [signUpPassword, setSignUpPassword] = useState('');
+  const [signUpFirstname, setSignUpFirstname] = useState('');
+	const [signInUsername, setSignInUsername] = useState('');
+	const [signInPassword, setSignInPassword] = useState('');
+  const [signInFirstname, setSignInFirstname] = useState('')
+
+  const handleRegister = () => {
+		fetch('http://localhost:3000/Login/signup', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ username: signUpUsername,firstname:setSignUpFirstname, password: signUpPassword }),
+		}).then(response => response.json())
+			.then(data => {console.log(data)
+				if (data.result) {
+					dispatch(login({ username: signUpUsername, token: data.token }));
+					setSignUpUsername('');
+					setSignUpPassword('');
+          setSignUpFirstname('');
+					setIsModalVisible(false)
+				}
+			});
+	};
+
+	const handleConnection = () => {
+
+		fetch('http://localhost:3000/Login/signin', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ username: signInUsername, password: signInPassword }),
+		}).then(response => response.json())
+			.then(data => {
+				if (data.result) {
+					dispatch(Login({ username: signInUsername, token: data.token }));
+					setSignInUsername('');
+					setSignInPassword('');
+          setSignInFirstname('');
+					setIsModalVisible(false)
+				}
+			});
+	};
+
+
+
 
   const handleSignUp = () => {
     signUpModal && setSignUpModal(false);
@@ -27,13 +71,14 @@ export default function Login() {
         icon={faXmark}
         className={styles.closeIcon}
         onClick={() => setSignUpModal(false)}
+      
       />
       <FontAwesomeIcon icon={faTwitter} className={styles.twitterIcon} />
       <h2>Create your Hackatweet account</h2>
-      <input type="text" placeholder="Firstname" />
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <div className={styles.signUpModalBtn}>Sign up</div>
+      <input type="text" placeholder="Firstname" onChange={(e) => setSignUpFirstname(e.target.value)} value={signUpFirstname}/>
+      <input type="text" placeholder="Username"  onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername}/>
+      <input type="password" placeholder="Password" onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword}/>
+      <div className={styles.signUpModalBtn} onClick={() => handleRegister()}>Sign up</div>
     </div>
   );
 
@@ -46,9 +91,9 @@ export default function Login() {
       />
       <FontAwesomeIcon icon={faTwitter} className={styles.twitterIcon} />
       <h2>Log In to your Hackatweet account</h2>
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <div className={styles.signUpModalBtn}>Sign In</div>
+      <input type="text" placeholder="Username" onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} />
+      <input type="password" placeholder="Password" onChange={(e) => setSignInPassword(e.target.value)} value={signInPassword} />
+      <div className={styles.signUpModalBtn} onClick={() => handleConnection()}>Sign In</div>
     </div>
   );
 
