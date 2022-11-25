@@ -8,22 +8,6 @@ import Link from "next/link";
 import Tweet from "./Tweet";
 import LastTweets from "./LastTweets";
 
-// const [tweetsData, setTweetsData] = useState([]);
-
-// console.log(tweetsData);
-
-// useEffect(() => {
-//   fetch("http://localhost:3000/???/tweets")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       setTweetsData(data.???);
-//     });
-// }, []);
-
-// const tweets = tweetsData.map((data, i) => {
-//     return <LastTweets key={i} {...data} />;
-// });
-
 function Home() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
@@ -31,6 +15,22 @@ function Home() {
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  const [tweetsData, setTweetsData] = useState([]);
+
+  console.log(tweetsData);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/users/tweets/${user.token}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setTweetsData(data.content.tweets);
+      });
+  }, []);
+
+  const tweets = tweetsData.map((data, i) => {
+    return <LastTweets key={i} {...data} />;
+  });
 
   return (
     <div>
@@ -55,9 +55,7 @@ function Home() {
         <div className={styles.tweets}>
           <h2>Home</h2>
           <Tweet />
-          <div className={styles.LastTweets}>
-            Mettre ici la variable contenant les tweets
-          </div>
+          <div className={styles.LastTweets}>{tweets}</div>
         </div>
         <div className={styles.trends}>
           <h2>Trends</h2>

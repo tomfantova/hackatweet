@@ -74,4 +74,15 @@ router.post("/tweet", async (req, res) => {
   }
 });
 
+//! Affichage du sous document Tweet  USER/TWEET
+router.get("/tweets/:token", (req, res) => {
+  User.findOne({ token: req.params.token }).then((data) => {
+    if (data) {
+      res.json({ result: true, content: data });
+    } else {
+      res.json({ result: false, error: "User not found" });
+    }
+  });
+});
+
 module.exports = router;

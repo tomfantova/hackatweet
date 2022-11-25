@@ -21,7 +21,6 @@ function Tweet() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTweet("");
       });
   };

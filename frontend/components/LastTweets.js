@@ -26,7 +26,7 @@ function LastTweets(props) {
           {props.firstname}@{props.username}
         </span>
       </div>
-      <div>{props.stringdutweet}</div>
+      <div>{props}</div>
       <div className={styles.likes}>
         <FontAwesomeIcon
           onClick={() => handleLike()}
