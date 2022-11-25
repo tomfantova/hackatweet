@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducers/user";
+import { addAll, addTweet, removeAllTweets } from "../reducers/tweets";
 import Moment from "react-moment";
 import { Modal } from "antd";
 import Link from "next/link";
@@ -11,14 +12,14 @@ import LastTweets from "./LastTweets";
 function Home() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+  const storeTweet = useSelector((state) => state.tweets.value);
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(removeAllTweets());
   };
 
   const [tweetsData, setTweetsData] = useState([]);
-
-  console.log(tweetsData);
 
   useEffect(() => {
     fetch("http://localhost:3000/users/tweets")
@@ -27,6 +28,8 @@ function Home() {
         setTweetsData(data.content);
       });
   }, []);
+
+  console.log(storeTweet);
 
   const tweets = tweetsData.map((data, i) => {
     return <LastTweets key={i} {...data} />;

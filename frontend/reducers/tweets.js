@@ -8,6 +8,9 @@ export const tweetsSlice = createSlice({
   name: "tweets",
   initialState,
   reducers: {
+    addAll: (state, action) => {
+      state.value = [action.payload];
+    },
     addTweet: (state, action) => {
       state.value.push(action.payload);
     },

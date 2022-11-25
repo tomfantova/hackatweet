@@ -42,7 +42,7 @@ router.post("/signup", (req, res) => {
   });
 });
 
-//USER/SIGNUP
+//USER/SIGNIN
 //! Création de la route Sign In ( connexion ) USER/SIGNIN
 router.post("/signin", (req, res) => {
   // verification des inputs bien rempli
