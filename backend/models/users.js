@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
   username: String,
   password: String,
   token: String,
-  text: tweetSchema,
+  text: [tweetSchema],
 });
 
 const User = mongoose.model("users", userSchema);
