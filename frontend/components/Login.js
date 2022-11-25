@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
+import { login, logout } from "../reducers/user";
+import Link from "next/link";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -15,6 +17,7 @@ export default function Login() {
   const [signUpFirstname, setSignUpFirstname] = useState("");
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+<<<<<<< HEAD
   const [signInFirstname, setSignInFirstname] = useState("");
 
   const handleRegister = () => {
@@ -23,12 +26,21 @@ export default function Login() {
     console.log(signUpUsername);
     console.log(signUpFirstname);
     console.log(signUpPassword);
+=======
+
+  const handleRegister = () => {
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+<<<<<<< HEAD
         firstname: setSignUpFirstname,
         username: signUpUsername,
+=======
+        username: signUpUsername,
+        firstname: signUpFirstname,
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         password: signUpPassword,
       }),
     })
@@ -36,11 +48,24 @@ export default function Login() {
       .then((data) => {
         console.log(data);
         if (data.result) {
+<<<<<<< HEAD
           dispatch(Login({ username: signUpUsername, token: data.token }));
           setSignUpUsername("");
           setSignUpPassword("");
           setSignUpFirstname("");
           setIsModalVisible(false);
+=======
+          dispatch(
+            login({
+              username: signUpUsername,
+              token: data.token,
+              firstname: data.firstname,
+            })
+          );
+          setSignUpUsername("");
+          setSignUpPassword("");
+          setSignUpFirstname("");
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         }
       });
   };
@@ -57,11 +82,24 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
+<<<<<<< HEAD
           dispatch(Login({ username: signInUsername, token: data.token }));
           setSignInUsername("");
           setSignInPassword("");
           setSignInFirstname("");
           setIsModalVisible(false);
+=======
+          console.log(data);
+          dispatch(
+            login({
+              username: signInUsername,
+              token: data.token,
+              firstname: data.firstname,
+            })
+          );
+          setSignInUsername("");
+          setSignInPassword("");
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         }
       });
   };
@@ -84,28 +122,51 @@ export default function Login() {
         onClick={() => setSignUpModal(false)}
       />
       <FontAwesomeIcon icon={faTwitter} className={styles.twitterIcon} />
+<<<<<<< HEAD
       <h2>Create your Hackatweet account</h2>
       <input
         type="text"
+=======
+      <div className={styles.h2}>Create your Hackatweet account</div>
+      <input
+        type="text"
+        className={styles.input}
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         placeholder="Firstname"
         onChange={(e) => setSignUpFirstname(e.target.value)}
         value={signUpFirstname}
       />
       <input
         type="text"
+<<<<<<< HEAD
+=======
+        className={styles.input}
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         placeholder="Username"
         onChange={(e) => setSignUpUsername(e.target.value)}
         value={signUpUsername}
       />
       <input
         type="password"
+<<<<<<< HEAD
+=======
+        className={styles.input}
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         placeholder="Password"
         onChange={(e) => setSignUpPassword(e.target.value)}
         value={signUpPassword}
       />
+<<<<<<< HEAD
       <div className={styles.signUpModalBtn} onClick={() => handleRegister()}>
         Sign up
       </div>
+=======
+      <Link href="/accueil">
+        <div className={styles.signUpModalBtn} onClick={() => handleRegister()}>
+          Sign up
+        </div>
+      </Link>
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
     </div>
   );
 
@@ -117,22 +178,44 @@ export default function Login() {
         onClick={() => setSignInModal(false)}
       />
       <FontAwesomeIcon icon={faTwitter} className={styles.twitterIcon} />
+<<<<<<< HEAD
       <h2>Log In to your Hackatweet account</h2>
       <input
         type="text"
+=======
+      <div className={styles.h2}>Log In to your Hackatweet account</div>
+      <input
+        type="text"
+        className={styles.input}
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         placeholder="Username"
         onChange={(e) => setSignInUsername(e.target.value)}
         value={signInUsername}
       />
       <input
         type="password"
+<<<<<<< HEAD
+=======
+        className={styles.input}
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
         placeholder="Password"
         onChange={(e) => setSignInPassword(e.target.value)}
         value={signInPassword}
       />
+<<<<<<< HEAD
       <div className={styles.signUpModalBtn} onClick={() => handleConnection()}>
         Sign In
       </div>
+=======
+      <Link href="/accueil">
+        <div
+          className={styles.signUpModalBtn}
+          onClick={() => handleConnection()}
+        >
+          Sign In
+        </div>
+      </Link>
+>>>>>>> 392ac42022df5ecaa4fc059005983fff6547896f
     </div>
   );
 

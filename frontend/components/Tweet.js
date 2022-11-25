@@ -6,8 +6,25 @@ import { Modal } from "antd";
 import Link from "next/link";
 
 function Tweet() {
+  const user = useSelector((state) => state.user.value);
   const [tweet, setTweet] = useState("");
   const count = tweet.length;
+
+  const postTweet = () => {
+    fetch("http://localhost:3000/users/tweet", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        token: user.token,
+        tweet: tweet,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setTweet("");
+      });
+  };
 
   return (
     <div>
@@ -23,7 +40,9 @@ function Tweet() {
           />
           <div className={styles.post}>
             <span className={styles.count}>{count}/280</span>
-            <button id="post">Tweet</button>
+            <button id="post" onClick={() => postTweet()}>
+              Tweet
+            </button>
           </div>
         </div>
       </main>
