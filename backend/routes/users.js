@@ -3,6 +3,7 @@ var router = express.Router();
 
 require("../models/connection");
 const User = require("../models/users");
+const Tweet = require("../models/tweets");
 const { checkBody } = require("../modules/checkBody");
 const uid2 = require("uid2");
 const token = uid2(32);
@@ -61,28 +62,57 @@ router.post("/signin", (req, res) => {
   });
 });
 
-//! Création du sous document Tweet  USER/TWEET
-router.post("/tweet", async (req, res) => {
+//! Enregistrement tweet
+router.post("/tweet", (req, res) => {
+  // verification des inputs bien rempli
   if (!checkBody(req.body, ["tweet"])) {
     res.json({ result: false, error: "Missing or empty fields" });
-  } else {
-    const tweet = req.body.tweet;
-    const userTweet = await User.findOne({ token: req.body.token });
-    userTweet.tweets.push(tweet);
-    await userTweet.save();
-    res.json({ result: true, tweet: tweet });
+    return;
   }
+  const newTweet = new Tweet({
+    username: req.body.username,
+    firstname: req.body.firstname,
+    token: req.body.token,
+    tweet: req.body.tweet,
+  });
+  newTweet.save().then((newDoc) => {
+    res.json({ result: true, tweet: newDoc });
+  });
 });
 
-//! Affichage du sous document Tweet  USER/TWEET
-router.get("/tweets/:token", (req, res) => {
-  User.findOne({ token: req.params.token }).then((data) => {
+//! Affichage tweets
+router.get("/tweets", (req, res) => {
+  Tweet.find().then((data) => {
     if (data) {
       res.json({ result: true, content: data });
     } else {
-      res.json({ result: false, error: "User not found" });
+      res.json({ result: false, error: "No tweets" });
     }
   });
 });
+
+// //! Création du sous document Tweet  USER/TWEET
+// router.post("/tweet", async (req, res) => {
+//   if (!checkBody(req.body, ["tweet"])) {
+//     res.json({ result: false, error: "Missing or empty fields" });
+//   } else {
+//     const tweet = req.body.tweet;
+//     const userTweet = await User.findOne({ token: req.body.token });
+//     userTweet.tweets.push(tweet);
+//     await userTweet.save();
+//     res.json({ result: true, tweet: tweet });
+//   }
+// });
+
+// //! Affichage du sous document Tweet  USER/TWEET
+// router.get("/tweets/:token", (req, res) => {
+//   User.findOne({ token: req.params.token }).then((data) => {
+//     if (data) {
+//       res.json({ result: true, content: data });
+//     } else {
+//       res.json({ result: false, error: "User not found" });
+//     }
+//   });
+// });
 
 module.exports = router;

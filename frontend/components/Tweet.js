@@ -17,6 +17,8 @@ function Tweet() {
       body: JSON.stringify({
         token: user.token,
         tweet: tweet,
+        username: user.username,
+        firstname: user.firstname,
       }),
     })
       .then((response) => response.json())

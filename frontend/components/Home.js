@@ -21,10 +21,10 @@ function Home() {
   console.log(tweetsData);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/tweets/${user.token}`)
+    fetch("http://localhost:3000/users/tweets")
       .then((response) => response.json())
       .then((data) => {
-        setTweetsData(data.content.tweets);
+        setTweetsData(data.content);
       });
   }, []);
 
