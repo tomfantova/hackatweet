@@ -54,12 +54,15 @@ router.post("/signin", (req, res) => {
 });
 
 //! Création du sous document Tweet  USER/TWEET
-router.post("/tweet", (req, res) => {
+router.post("/tweet", async (req, res) => {
   if (!checkBody(req.body, ["tweet"])) {
     res.json({ result: false, error: "Missing or empty fields" });
   } else {
     const tweet = req.body.tweet;
-    User.updateOne({ token: req.body.token }, [tweets.push(tweet)]).then();
+    const userTweet = await User.findOne({ token: req.body.token });
+    userTweet.tweets.push(tweet);
+    await userTweet.save();
+    res.json({ result: true, tweet: tweet });
   }
 });
 
