@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 
+const tweetSchema = mongoose.Schema({
+  tweet: String,
+});
+
 const userSchema = mongoose.Schema({
   firstname: String,
-  localisation: String,
   username: String,
   password: String,
-  connected: Boolean,
   token: String,
+  tweets: [tweetSchema],
 });
 
 const User = mongoose.model("users", userSchema);

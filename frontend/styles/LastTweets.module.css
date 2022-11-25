@@ -1,0 +1,20 @@
+.tweet {
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  height: 150px;
+}
+
+.egg {
+  height: 50px;
+  border-radius: 50px;
+}
+
+.user {
+  display: flex;
+}
+
+.likes {
+  display: flex;
+}

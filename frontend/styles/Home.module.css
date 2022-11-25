@@ -1,7 +1,6 @@
 .main {
   display: flex;
   min-height: 100vh;
-  background-color: #292e38ff;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
 }
@@ -60,11 +59,33 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .pseudo {
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: flex-start;
   font-size: small;
+  font-weight: bold;
+}
+
+.username {
+  color: grey;
+}
+
+.logout {
+  border: 2px solid#cccccc;
+  color: #eeeeee;
+  background-color: transparent;
+}
+
+.post {
+  display: flex;
+  justify-content: center;
+}
+
+.LastTweets {
+  height: 580px;
 }

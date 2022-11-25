@@ -7,6 +7,7 @@ import Link from "next/link";
 
 function Tweet() {
   const [tweet, setTweet] = useState("");
+  const count = tweet.length;
 
   return (
     <div>
@@ -14,12 +15,14 @@ function Tweet() {
         <div className={styles.container}>
           <input
             type="text"
+            maxLength="280"
             placeholder="What's up ?"
             id="tweet"
             onChange={(e) => setTweet(e.target.value)}
             value={tweet}
           />
           <div className={styles.post}>
+            <span className={styles.count}>{count}/280</span>
             <button id="post">Tweet</button>
           </div>
         </div>
