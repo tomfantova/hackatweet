@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../reducers/user";
 import Moment from "react-moment";
 import { Modal } from "antd";
 import Link from "next/link";
@@ -24,6 +25,13 @@ import LastTweets from "./LastTweets";
 // });
 
 function Home() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <div>
       <main className={styles.main}>
@@ -33,11 +41,15 @@ function Home() {
             <div className={styles.profile}>
               <img src="egg.jpg" className={styles.egg} />
               <div className={styles.pseudo}>
-                <p>user.firstname ici</p>
-                <p className={styles.username}>@user.username ici</p>
+                <p>@{user.username}</p>
+                <p className={styles.username}>{user.firstname}</p>
               </div>
             </div>
-            <button className={styles.logout}>Logout</button>
+            <Link href="/">
+              <button className={styles.logout} onClick={() => handleLogout()}>
+                Logout
+              </button>
+            </Link>
           </div>
         </div>
         <div className={styles.tweets}>
