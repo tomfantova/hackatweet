@@ -57,18 +57,20 @@ router.post("/signin", (req, res) => {
   });
 });
 
-// //! Création du sous document Tweet  USER/TWEET
-// router.post("/tweet", (req, res) => {
-//   if (!checkBody(req.body, ["text"])) {
-//     res.json({ result: false, error: "Missing or empty fields" });
-//   } else {
-//     const newTweet = {
-//       text: req.body.text,
-//     };
-//     newTweet.save().then(() => {
-//       res.json({ result: true, tweet: newTweet });
-//     });
-//   }
-// });
+//! Création du sous document Tweet  USER/TWEET
+// Comment relier le tweet a un utilisateur ?
+
+router.post("/signin/tweet", (req, res) => {
+  if (!checkBody(req.body, ["tweet"])) {
+    res.json({ result: false, error: "Missing or empty fields" });
+  } else {
+    const newTweet = {
+      tweet: req.body.tweet,
+    };
+    newTweet.save().then((data) => {
+      res.json({ result: true, tweet: newTweet });
+    });
+  }
+});
 
 module.exports = router;
