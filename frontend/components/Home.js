@@ -55,7 +55,7 @@ function Home() {
         <div className={styles.tweets}>
           <h2>Home</h2>
           <Tweet />
-          <div className={styles.LastTweets}>{tweets}</div>
+          <div className={styles.LastTweets}>{tweets.reverse()}</div>
         </div>
         <div className={styles.trends}>
           <h2>Trends</h2>

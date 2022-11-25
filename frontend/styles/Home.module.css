@@ -88,4 +88,5 @@
 
 .LastTweets {
   height: 580px;
+  overflow-y: scroll;
 }

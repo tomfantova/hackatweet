@@ -175,7 +175,7 @@ export default function Login() {
         <div className={styles.signUpBtn} onClick={() => handleSignUp()}>
           Sign up
         </div>
-        <p>Already have an account?</p>
+        <p>Already have an account ?</p>
         <div className={styles.signUpBtn} onClick={() => handleSignIn()}>
           Sign in
         </div>

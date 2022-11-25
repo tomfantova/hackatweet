@@ -4,10 +4,12 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
   height: 150px;
+  padding: 10px;
+  border-top: 1px grey solid;
 }
 
 .egg {
-  height: 50px;
+  height: 40px;
   border-radius: 50px;
 }
 
@@ -17,4 +19,24 @@
 
 .likes {
   display: flex;
+  align-items: center;
+}
+
+.pseudo {
+  padding: 10px;
+}
+
+.text {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.likeIcon {
+  margin-right: 10px;
+}
+
+.trashIcon {
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
 }

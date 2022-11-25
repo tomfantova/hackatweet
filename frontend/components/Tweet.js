@@ -10,6 +10,14 @@ function Tweet() {
   const [tweet, setTweet] = useState("");
   const count = tweet.length;
 
+  const displayTweets = () => {
+    fetch("http://localhost:3000/users/tweets")
+      .then((response) => response.json())
+      .then((data) => {
+        setTweetsData(data.content);
+      });
+  };
+
   const postTweet = () => {
     fetch("http://localhost:3000/users/tweet", {
       method: "POST",

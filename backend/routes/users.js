@@ -93,28 +93,13 @@ router.get("/tweets", (req, res) => {
   });
 });
 
-// //! Création du sous document Tweet  USER/TWEET
-// router.post("/tweet", async (req, res) => {
-//   if (!checkBody(req.body, ["tweet"])) {
-//     res.json({ result: false, error: "Missing or empty fields" });
-//   } else {
-//     const tweet = req.body.tweet;
-//     const userTweet = await User.findOne({ token: req.body.token });
-//     userTweet.tweets.push(tweet);
-//     await userTweet.save();
-//     res.json({ result: true, tweet: tweet });
-//   }
-// });
-
-// //! Affichage du sous document Tweet  USER/TWEET
-// router.get("/tweets/:token", (req, res) => {
-//   User.findOne({ token: req.params.token }).then((data) => {
-//     if (data) {
-//       res.json({ result: true, content: data });
-//     } else {
-//       res.json({ result: false, error: "User not found" });
-//     }
-//   });
-// });
+//! Suppression tweet
+router.delete("/:tweet", (req, res) => {
+  Tweet.deleteOne({
+    tweet: req.params.tweet,
+  }).then((data) => {
+    res.json({ result: true, tweet: data });
+  });
+});
 
 module.exports = router;
