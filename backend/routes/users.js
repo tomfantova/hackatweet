@@ -55,18 +55,14 @@ router.post("/signin", (req, res) => {
   });
 });
 
-// //! Création du sous document Tweet  USER/TWEET
-// router.post("/tweet", (req, res) => {
-//   if (!checkBody(req.body, ["text"])) {
-//     res.json({ result: false, error: "Missing or empty fields" });
-//   } else {
-//     const newTweet = {
-//       text: req.body.text,
-//     };
-//     newTweet.save().then(() => {
-//       res.json({ result: true, tweet: newTweet });
-//     });
-//   }
-// });
+//! Création du sous document Tweet  USER/TWEET
+router.post("/tweet", (req, res) => {
+  if (!checkBody(req.body, ["tweet"])) {
+    res.json({ result: false, error: "Missing or empty fields" });
+  } else {
+    const tweet = req.body.tweet;
+    User.updateOne({ token: req.body.token }, [tweets.push(tweet)]).then();
+  }
+});
 
 module.exports = router;
