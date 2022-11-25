@@ -17,14 +17,20 @@ export default function Login() {
   const [signUpFirstname, setSignUpFirstname] = useState("");
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+  const [signInFirstname, setSignInFirstname] = useState("");
 
   const handleRegister = () => {
+    console.log("click detected");
+
+    console.log(signUpUsername);
+    console.log(signUpFirstname);
+    console.log(signUpPassword);
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        firstname: setSignUpFirstname,
         username: signUpUsername,
-        firstname: signUpFirstname,
         password: signUpPassword,
       }),
     })

@@ -11,6 +11,7 @@ const bcrypt = require("bcrypt");
 
 // ROUTE USER
 
+// USER/SIGNUP
 //! Création de la route SIGN UP avec le module CheckBody USER/SIGNUP
 router.post("/signup", (req, res) => {
   // verification des inputs bien rempli
@@ -41,6 +42,7 @@ router.post("/signup", (req, res) => {
   });
 });
 
+//USER/SIGNUP
 //! Création de la route Sign In ( connexion ) USER/SIGNIN
 router.post("/signin", (req, res) => {
   // verification des inputs bien rempli
